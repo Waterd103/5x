@@ -1,0 +1,166 @@
+# Medieval Fantasy 4X Strategy Game - Design Document
+
+## Document Purpose and Development Context
+This document serves as the primary reference for development conversations with Claude, focusing on creating a prototype for presentation to an indie studio. This is the developer's first game development project, with experience primarily in Unity C# modding. Detailed guidance and step-by-step implementation support will be needed throughout development.
+
+### Developer Background
+- Experience with Unity C# modding
+- First full game development project
+- Needs detailed implementation guidance
+- Requires clear explanation of game development concepts
+- Strong understanding of game design principles
+
+## Technical Foundation
+### Networking (Critical Priority)
+- Built on Photon Fusion 2
+- Networking quality is crucial for project success
+- Must achieve smooth simultaneous turns
+- Requires robust state synchronization
+- Focus on minimizing perceived latency
+- Network prediction for smooth gameplay
+
+## Prototype Scope
+- 1v1 competitive gameplay
+- Single human faction
+- 5x4 fixed map size
+- Core mechanics implementation
+- Basic UI and controls
+- Static camera view
+- Functional combat system
+- Robust networking implementation
+
+## Project Overview
+A competitive 1v1 4X strategy game set in a medieval fantasy world, featuring simultaneous turns and quick 30-45 minute matches. The game combines classic 4X mechanics with modern competitive design principles, emphasizing strategic depth and accessibility.
+
+### Core Features (Prototype)
+- Simultaneous turn-based gameplay
+- Grid-based tactical combat
+- Leader-based faction system
+- Resource management
+- Technology progression
+- Multiple victory conditions
+- Fog of war system
+- Real-time networked gameplay
+
+### Future Scalability Features
+*Note: These features are not part of the prototype but demonstrate the system's extensibility*
+- Free-for-all mode (up to 6 players)
+- Single-player campaign
+- Customizable skirmish mode
+- Matchmaking system
+- Leaderboards
+- Replay system
+- Combat testing mode
+- Comprehensive modding support
+
+## Game Systems
+
+### Fog of War System
+- Limited visibility of enemy-controlled areas
+- Hidden information:
+  - Enemy unit compositions
+  - Enemy resource counts
+  - Enemy building details
+  - Enemy advisor choices
+- Visibility mechanics:
+  - Units provide vision
+  - Buildings provide vision
+  - Terrain affects vision range
+  - Special abilities can reveal areas
+
+### Map Structure
+**Prototype Implementation:**
+- Fixed 5x4 grid
+- Static camera (entire map visible)
+- Square contents:
+  - Terrain type
+  - Up to 3 buildings
+  - Units
+  - Resource generation type (Gold or Crystal)
+- Fog of war implementation
+
+### Victory Conditions
+**Prototype Implementation:**
+1. Control 4 cities for 2 consecutive turns
+2. Eliminate all enemy cities
+3. Tiebreaker: Most cities after 30 rounds
+4. Maximum game length: 30 rounds
+
+### Turn Structure
+
+#### Phase 1: Advisor Selection
+- Players simultaneously choose from 4 identical advisor options
+- Each advisor provides 3 actions in specific order
+- Algorithm ensures all 5 possible actions appear at least once
+- Choices hidden until resolution phase
+
+#### Phase 2: Action Execution
+Players receive resources and execute their 3 actions:
+1. **Move:** Order unit movement from a single square
+2. **Build:** Construct buildings in controlled squares
+3. **Produce:** Generate additional resources
+4. **Research:** Advance in technology tree
+5. **Recruit:** Create new units in cities or barracks
+
+**Combat Squares:**
+- Building and recruitment restricted
+- Special combat actions available
+- Combat spell casting enabled
+
+#### Phase 3: Combat Resolution
+- Automated real-time combat resolution (30 seconds max)
+- AI-controlled unit behavior
+- Terrain-based combat scene generation
+- Movement orders executed post-combat
+
+[Previous sections remain the same through Technical Specifications...]
+
+## Development Implementation Priority (Prototype)
+1. Networking Foundation
+   - Photon Fusion 2 setup
+   - State synchronization
+   - Network prediction
+   - Latency handling
+
+2. Core game loop
+   - Turn structure
+   - Resource system
+   - Basic unit movement
+   - Fog of war implementation
+
+3. Combat system
+   - Real-time battle scene
+   - Basic unit AI
+   - Combat resolution
+   - Network synchronization
+
+4. Human faction implementation
+   - Basic unit set (Level 1)
+   - Core buildings
+   - Single leader
+
+5. UI and Controls
+   - Grid interaction
+   - Action selection
+   - Resource display
+   - Fog of war visualization
+
+6. Polish and Testing
+   - Basic animations
+   - Sound effects
+   - Balance adjustments
+   - Network performance optimization
+
+## Development Notes for Claude
+- This document serves as the foundation for our development conversations
+- Developer is new to full game development - detailed explanations needed
+- Networking and smooth online play are critical priorities
+- All implementation discussions should focus on prototype features
+- Future scalability features are documented for context but are not immediate development priorities
+- When discussing implementation, we'll break down each system into manageable Unity components
+- References to this document's sections will be made to maintain consistency in terminology and mechanics
+- Provide detailed, step-by-step guidance for implementation
+- Include explanations of core game development concepts when introducing new systems
+- Focus on robust, scalable solutions even in prototype phase
+- Consider networking implications for all features
+- Emphasize code organization and best practices
